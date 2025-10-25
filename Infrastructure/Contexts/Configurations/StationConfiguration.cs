@@ -19,7 +19,6 @@ namespace Infrastructure.Contexts.Configurations
 
             builder.Property(s => s.VendorId)
                    .HasColumnName("vendor_id")
-                   .HasMaxLength(100)
                    .IsRequired();
 
             builder.Property(c => c.CreatedAt)

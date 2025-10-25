@@ -15,6 +15,8 @@ namespace Application.DTOs.Cars
         public string CarType { get; set; }
         public string FuelType { get; set; }
         public string Status { get; set; }
+        public decimal UsedQty { get; set; } = 0;
+
         public string ControlType { get; set; }
         public int LimitQty { get; set; }
         public string? StartDay { get; set; }

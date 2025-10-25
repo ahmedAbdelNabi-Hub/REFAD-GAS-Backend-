@@ -41,9 +41,10 @@ namespace Presentation.Controllers
      
         [HttpGet("/api/stations")]
         public async Task<IActionResult> GetAllStations(
-            [FromQuery(Name = "")] PaginationParams paginationParams)
+            [FromQuery(Name = "")] PaginationParams paginationParams, [FromQuery] string? VendorId ) 
         {
-            var query = new GetAllStationsQuery(paginationParams);
+
+            var query = new GetAllStationsQuery(paginationParams, VendorId);
             var response = await _mediator.Send(query);
             return Ok(response);
         }

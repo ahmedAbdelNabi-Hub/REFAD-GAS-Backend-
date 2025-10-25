@@ -5,17 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Specification.Stations
+namespace Domain.Specification.FuelRequests
 {
-    public class StationWithPaginationSpecification : StationSpecifications
+    public class FuelRequestWithPaginationsSpecification : FuelRequestSpecification 
     {
-
-        public StationWithPaginationSpecification(PaginationParams paginationParams , string vendorId) : base(paginationParams, vendorId)
+        public FuelRequestWithPaginationsSpecification(PaginationParams paginationParams, FuelRequestParams fuelParams)
+           : base(paginationParams, fuelParams)
         {
             ApplyPagination(
                 (paginationParams.PageIndex - 1) * paginationParams.PageSize,
                 paginationParams.PageSize
             );
+            
         }
     }
 }

@@ -13,12 +13,16 @@ namespace Domain.Entities
         public Guid CompanyId { get; set; }
         public Guid CarId { get; set; }
         public decimal Qty { get; set; }
+
         public decimal Amount { get; set; }
-        public string Station { get; set; }
         public DateTimeOffset RequestDateTime { get; set; } = DateTimeOffset.UtcNow;
         public string Status { get; set; } = "pending";
         public Guid? StationId { get; set; }
         public string PumpImageBefore { get; set; }
         public string PumpImageAfter { get; set; }
+
+        public Company Company { get; set; }
+        public Car Car { get; set; }    
+        public Station Station { get; set; }
     }
 }

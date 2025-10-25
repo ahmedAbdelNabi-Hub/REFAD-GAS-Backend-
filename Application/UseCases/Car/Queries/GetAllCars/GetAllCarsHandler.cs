@@ -39,6 +39,7 @@ namespace Application.UseCases.Car.Queries.GetAllCars
                       ControlType = c.ControlType,
                       StartDay = c.StartDay, 
                       LimitQty = c.LimitQty,
+                      UsedQty =c.UsedQty,
                       DriverName = c.DriverName,
                       DriverMobile = c.DriverMobile,
                       DriverPassword = c.DriverPassword,

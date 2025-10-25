@@ -9,7 +9,7 @@ namespace Domain.Specification.Stations
 {
     public class StationCountSpecification : StationSpecifications
     {
-        public StationCountSpecification(PaginationParams paginationParams): base(paginationParams)
+        public StationCountSpecification(PaginationParams paginationParams,string vendorId): base(paginationParams, vendorId)
         {
 
         }

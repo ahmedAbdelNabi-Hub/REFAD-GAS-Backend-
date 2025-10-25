@@ -22,8 +22,9 @@ namespace Application.UseCases.Station.Queries.GetAllStations
 
         public async Task<PaginationDTO<StationDto>> Handle(GetAllStationsQuery request, CancellationToken cancellationToken)
         {
-            var spec = new StationWithPaginationSpecification(request.PaginationParams);
-            var countSpec = new StationCountSpecification(request.PaginationParams);
+
+            var spec = new StationWithPaginationSpecification(request.PaginationParams, request.VendorId);
+            var countSpec = new StationCountSpecification(request.PaginationParams,  request.VendorId);
 
             var stations = await _unitOfWork.Repository<Domain.Entities.Station>()
                 .GetProjectedAsync(s => new StationDto

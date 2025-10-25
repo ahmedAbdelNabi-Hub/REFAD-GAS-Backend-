@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.Response;
+using Domain.Entities;
 using Domain.Interfaces.UnitOfWork;
 using MediatR;
 using System;
@@ -25,6 +26,16 @@ namespace Application.UseCases.Station.Commands.UpdateStation
 
             if (station == null)
                 return new BaseApiResponse<int>(404, "Station not found.");
+
+            if (!string.Equals(station.StationId, request.StationDto.StationId, StringComparison.OrdinalIgnoreCase))
+            {
+                var existingStation = await repo
+                    .GetByIdSpecAsync(new Domain.Specification.Stations.StationSpecifications(request.StationDto.StationId));
+
+                if (existingStation != null && existingStation.Id.ToString() != station.Id.ToString())
+                    return new BaseApiResponse<int>(400, "Station Code already registered.");
+            }
+
 
             var dto = request.StationDto;
             station.StationId = dto.StationId;

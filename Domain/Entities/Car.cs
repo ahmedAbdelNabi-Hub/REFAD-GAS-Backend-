@@ -16,8 +16,8 @@ namespace Domain.Entities
         public string Status { get; set; } = "inactive";
         public string ControlType { get; set; } = "Monthly";
         public int LimitQty { get; set; }
-        public string? StartDay { get; set; } 
-
+        public string? StartDay { get; set; }
+        public decimal UsedQty { get; set; } = 0;
         public string DriverName { get; set; }
         public string DriverMobile { get; set; }
         public string DriverPassword { get; set; }

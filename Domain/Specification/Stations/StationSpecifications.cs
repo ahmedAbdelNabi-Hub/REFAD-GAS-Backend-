@@ -8,9 +8,15 @@ namespace Domain.Specification.Stations
 {
     public class StationSpecifications : BaseSpecifications<Station>
     {
-        public StationSpecifications(PaginationParams paginationParams)
+        public StationSpecifications(PaginationParams paginationParams,string vendorId)
         {
             Expression<Func<Station, bool>> criteria = s => true;
+
+            if (!string.IsNullOrEmpty(vendorId))
+            {
+                var vendorGuid = Guid.Parse(vendorId);
+                criteria = criteria.AndAlso(s => s.Vendor.Id == vendorGuid);
+            }
 
             if (!string.IsNullOrWhiteSpace(paginationParams.Search))
             {
@@ -26,6 +32,11 @@ namespace Domain.Specification.Stations
             }
 
             AddCriteria(criteria);
+        }
+
+        public StationSpecifications(Guid stationId)
+        {
+            AddCriteria(s => s.Id == stationId);
         }
 
         public StationSpecifications(string stationId)

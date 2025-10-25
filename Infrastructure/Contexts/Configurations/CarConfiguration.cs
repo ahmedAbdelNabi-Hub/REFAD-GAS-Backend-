@@ -39,6 +39,9 @@ namespace Infrastructure.Contexts.Configurations
                    .HasColumnName("start_day") 
                    .IsRequired();
 
+            builder.Property(c => c.UsedQty)
+                       .HasColumnName("used_qty");
+
             builder.Property(c => c.FuelType)
                    .HasColumnName("fuel_type")
                    .HasMaxLength(20)

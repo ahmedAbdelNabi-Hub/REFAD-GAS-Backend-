@@ -21,7 +21,7 @@ namespace Application.UseCases.Station.Queries.GetStationById
 
         public async Task<StationDto> Handle(GetStationByIdQuery request, CancellationToken cancellationToken)
         {
-            var spec = new StationSpecifications(request.Id.ToString());
+            var spec = new StationSpecifications(request.Id);
             var station = await _unitOfWork.Repository<Domain.Entities.Station>()
                 .GetProjectedAsync(s => new StationDto
                 {
@@ -32,7 +32,6 @@ namespace Application.UseCases.Station.Queries.GetStationById
                     LocationLat = s.LocationLat,
                     LocationLng = s.LocationLng,
                     VendorId = s.VendorId,
-
                 }, spec);
             return station.FirstOrDefault();
         }
